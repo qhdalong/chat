@@ -11,9 +11,15 @@ port = 9999
 ClietnSocket.connect((address,port))
 print('客户端已启动')
 
-ClietnSocket.send(b'hello world!')
+choice = 1
 
-data = ClietnSocket.recv(1024)
-print(data.decode('utf-8'))
+while choice:
+    msg = input('请输入聊天内容：')
+    choice = input('choice:')
+
+    ClietnSocket.send(msg.encode('utf-8'))
+
+    data = ClietnSocket.recv(1024)
+    print('接收服务器信息为：', data.decode('utf-8'))
 
 ClietnSocket.close()
